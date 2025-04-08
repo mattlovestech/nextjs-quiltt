@@ -1,0 +1,88 @@
+
+## PROJECT OVERVIEW
+This project is a Next.js application using Quiltt for authentication.  The project structure is designed for scalability and maintainability.
+
+## CODE STYLE
+Adhere to standard TypeScript and Next.js best practices.  Consistent indentation and formatting are crucial.  Utilize Prettier for automatic formatting.
+
+## FOLDER ORGANIZATION
+The project follows a standard Next.js folder structure with additional folders for components, hooks, and generated code.  Refer to the project structure for details.
+
+## TECH STACK
+- Next.js
+- TypeScript
+- Quiltt (for authentication)
+- Tailwind CSS
+- pnpm (package manager - installation instructions below)
+- GraphQL (codegen.ts)
+- @graphql-codegen/cli
+- @graphql-codegen/typescript
+- @graphql-codegen/typescript-operations
+
+## PROJECT-SPECIFIC STANDARDS
+- All components should be written in TypeScript.
+- Use functional components where appropriate.
+- Utilize hooks for state management and side effects.
+- To avoid hydration mismatches, ensure consistent rendering between server and client, especially when dealing with session data.  Returning `null` initially if no session exists can prevent these issues.  Consider using `useEffect` to handle asynchronous data fetching and updates related to session data.
+
+## WORKFLOW & RELEASE RULES
+- Use Git for version control.
+- Follow semantic versioning for releases.
+- Utilize a robust CI/CD pipeline (to be defined).
+
+## REFERENCE EXAMPLES
+- Refer to the Next.js documentation for best practices: [https://nextjs.org/docs](https://nextjs.org/docs) (Example link - replace with actual link if available)
+- Quiltt Authentication Documentation (link to be added)
+
+## PROJECT DOCUMENTATION & CONTEXT SYSTEM
+- All code should be well-documented.
+- JSDoc style comments are preferred.
+- Maintain a comprehensive README file.
+
+## DEBUGGING
+- Utilize the browser's developer tools for debugging.
+- Leverage TypeScript's type system to catch errors early.
+- To resolve "command not found" errors related to `graphql-codegen`, ensure the necessary packages are installed using: `pnpm add -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations`.  Then, run `pnpm run graphql:generate`. If issues persist, run `pnpm install` before attempting code generation.
+- To debug "Hydration failed" errors, ensure the initial UI matches what was rendered on the server.  Returning `null` in components before data is fetched can prevent mismatches. Carefully review server-side and client-side rendering of dynamic data, particularly session data.
+
+
+## FINAL DOs AND DON'Ts
+- **DO** use pnpm for package management.
+- **DO** commit frequently with clear commit messages.
+- **DON'T** commit sensitive information (API keys, etc.).
+- **DON'T** hardcode values; use environment variables instead.
+- **DO** understand that `pnpm run graphql:generate` runs the GraphQL Code Generator to generate TypeScript types and code from your GraphQL schema and operations, ensuring type safety and improved IDE support.  The generated files are stored in `/src/generated`.
+- **DO** handle potential hydration mismatches by ensuring consistent rendering between server and client, especially when dealing with session information.  Employ techniques like conditional rendering or loading states to mitigate this issue.
+
+
+### pnpm Installation Instructions:
+
+For macOS (using Homebrew):
+```bash
+brew install pnpm
+```
+
+For Windows (using PowerShell):
+```bash
+iwr https://get.pnpm.io/install.ps1 -useb | iex
+```
+
+For Linux:
+```bash
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
+After installing pnpm, run:
+
+```bash
+cd quiltt-nextjs-template
+pnpm install
+```
+
+Alternative package managers (npm and yarn) can be used by modifying commands in the README accordingly.  For example, using npm:
+
+```bash
+npm install
+npm run graphql:generate
+npm run dev
+```

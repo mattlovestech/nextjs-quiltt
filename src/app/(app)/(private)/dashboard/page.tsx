@@ -13,6 +13,7 @@ const QUERY = gql`query Query {
     balance {
       current
     }
+	
   }
 }`
 
