@@ -30,8 +30,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       dotenv:
-        specifier: 16.4.5
-        version: 16.4.5
+        specifier: 16.4.7
+        version: 16.4.7
       next:
         specifier: 14.2.5
         version: 14.2.5(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1197,8 +1197,8 @@ packages:
   dot-case@3.0.4:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
 
-  dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
   dset@3.1.3:
@@ -3078,7 +3078,7 @@ snapshots:
       '@whatwg-node/fetch': 0.9.19
       chalk: 4.1.2
       debug: 4.3.6
-      dotenv: 16.4.5
+      dotenv: 16.4.7
       graphql: 16.9.0
       graphql-request: 6.1.0(graphql@16.9.0)
       http-proxy-agent: 7.0.2
@@ -3733,7 +3733,7 @@ snapshots:
       no-case: 3.0.4
       tslib: 2.6.3
 
-  dotenv@16.4.5: {}
+  dotenv@16.4.7: {}
 
   dset@3.1.3: {}
 
