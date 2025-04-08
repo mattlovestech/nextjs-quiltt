@@ -59,7 +59,7 @@ importers:
         version: 1.8.3
       '@graphql-codegen/cli':
         specifier: 5.0.2
-        version: 5.0.2(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.5.4)
+        version: 5.0.2(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.8.3)
       '@graphql-codegen/typescript':
         specifier: 4.0.9
         version: 4.0.9(graphql@16.9.0)
@@ -82,8 +82,8 @@ importers:
         specifier: 3.4.9
         version: 3.4.9
       typescript:
-        specifier: 5.5.4
-        version: 5.5.4
+        specifier: 5.8.3
+        version: 5.8.3
 
 packages:
 
@@ -2154,8 +2154,8 @@ packages:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
 
-  typescript@5.5.4:
-    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2736,7 +2736,7 @@ snapshots:
       graphql: 16.9.0
       tslib: 2.6.3
 
-  '@graphql-codegen/cli@5.0.2(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.5.4)':
+  '@graphql-codegen/cli@5.0.2(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.8.3)':
     dependencies:
       '@babel/generator': 7.25.0
       '@babel/template': 7.25.0
@@ -2756,11 +2756,11 @@ snapshots:
       '@graphql-tools/utils': 10.5.2(graphql@16.9.0)
       '@whatwg-node/fetch': 0.8.8
       chalk: 4.1.2
-      cosmiconfig: 8.3.6(typescript@5.5.4)
+      cosmiconfig: 8.3.6(typescript@5.8.3)
       debounce: 1.2.1
       detect-indent: 6.1.0
       graphql: 16.9.0
-      graphql-config: 5.1.0(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.5.4)
+      graphql-config: 5.1.0(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.8.3)
       inquirer: 8.2.6
       is-glob: 4.0.3
       jiti: 1.21.6
@@ -3667,14 +3667,14 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  cosmiconfig@8.3.6(typescript@5.5.4):
+  cosmiconfig@8.3.6(typescript@5.8.3):
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.8.3
 
   cross-fetch@3.1.8:
     dependencies:
@@ -3869,7 +3869,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  graphql-config@5.1.0(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.5.4):
+  graphql-config@5.1.0(@types/node@22.2.0)(graphql@16.9.0)(typescript@5.8.3):
     dependencies:
       '@graphql-tools/graphql-file-loader': 8.0.1(graphql@16.9.0)
       '@graphql-tools/json-file-loader': 8.0.1(graphql@16.9.0)
@@ -3877,7 +3877,7 @@ snapshots:
       '@graphql-tools/merge': 9.0.5(graphql@16.9.0)
       '@graphql-tools/url-loader': 8.0.2(@types/node@22.2.0)(graphql@16.9.0)
       '@graphql-tools/utils': 10.5.2(graphql@16.9.0)
-      cosmiconfig: 8.3.6(typescript@5.5.4)
+      cosmiconfig: 8.3.6(typescript@5.8.3)
       graphql: 16.9.0
       jiti: 1.21.6
       minimatch: 4.2.3
@@ -4675,7 +4675,7 @@ snapshots:
 
   type-fest@0.21.3: {}
 
-  typescript@5.5.4: {}
+  typescript@5.8.3: {}
 
   ua-parser-js@1.0.38: {}
 
