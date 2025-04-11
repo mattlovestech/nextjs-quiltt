@@ -1,16 +1,12 @@
----
-description: Cursor rules derived by SpecStory from the project AI interaction history
-globs: *
----
 
 ## PROJECT OVERVIEW
-This project is a Next.js application using Quiltt for authentication.  The project structure is designed for scalability and maintainability. A new "smart-search" page and a "graphql-finder" page have been added to utilize OpenAI for natural language to GraphQL query conversion. These features were implemented on 2025-04-08.
+This project is a Next.js application using Quiltt for authentication.  The project structure is designed for scalability and maintainability.  A new "smart-search" page has been added to utilize OpenAI for natural language to GraphQL query conversion.
 
 ## CODE STYLE
 Adhere to standard TypeScript and Next.js best practices.  Consistent indentation and formatting are crucial.  Utilize Prettier for automatic formatting.
 
 ## FOLDER ORGANIZATION
-The project follows a standard Next.js folder structure with additional folders for components, hooks, and generated code.  Refer to the project structure for details.  A new `src/app/(app)/(private)/smart-search/page.tsx` file has been added for the smart search functionality.  An API route has been added at `src/app/api/generate-query/route.ts` to handle OpenAI requests securely. A new `src/app/(app)/(private)/graphql-finder/page.tsx` file and API route at `src/app/api/graphql-finder/route.ts` have been added for enhanced GraphQL query generation based on natural language input and the schema defined in `/src/generated/graphql.ts`.
+The project follows a standard Next.js folder structure with additional folders for components, hooks, and generated code.  Refer to the project structure for details.  A new `src/app/(app)/(private)/smart-search/page.tsx` file has been added for the smart search functionality.  An API route has been added at `src/app/api/generate-query/route.ts` to handle OpenAI requests securely.
 
 ## TECH STACK
 - Next.js
@@ -24,7 +20,7 @@ The project follows a standard Next.js folder structure with additional folders 
 - @graphql-codegen/typescript-operations
 - OpenAI (for natural language processing)
 - @apollo/client (for GraphQL client)
-- openai (npm package for OpenAI API interaction)
+
 
 ## PROJECT-SPECIFIC STANDARDS
 - All components should be written in TypeScript.
@@ -52,8 +48,8 @@ The project follows a standard Next.js folder structure with additional folders 
 - Leverage TypeScript's type system to catch errors early.
 - To resolve "command not found" errors related to `graphql-codegen`, ensure the necessary packages are installed using: `pnpm add -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations`.  Then, run `pnpm run graphql:generate`. If issues persist, run `pnpm install` before attempting code generation.  The `pnpm run graphql:generate` command executes the GraphQL Code Generator, generating TypeScript types and code from your GraphQL schema and operations. This enhances type safety, improves IDE support, and reduces manual type creation for GraphQL operations. The generated files reside in `/src/generated`.
 - To debug "Hydration failed" errors, ensure the initial UI matches what was rendered on the server.  Returning `null` in components before data is fetched can prevent mismatches. Carefully review server-side and client-side rendering of dynamic data, particularly session data.  Implementing consistent loading states during initial rendering on both server and client sides is crucial to prevent hydration mismatches.  This ensures a smooth transition and avoids errors by presenting the same visual representation on both ends.
-- For debugging OpenAI integration, ensure the `NEXT_PUBLIC_OPENAI_API_KEY` environment variable is correctly set and the OpenAI library is properly configured.  Consider using a backend API route for production to handle sensitive API keys.  For local development, the `dangerouslyAllowBrowser` flag can be set to `true` in the OpenAI client initialization, but this should be removed in production environments.
-- For debugging the GraphQL Finder, ensure the API route `/api/graphql-finder` is correctly configured to handle requests and the OpenAI API key is properly set.  The route leverages the `/src/generated/graphql.ts` schema context for query generation.
+- For debugging OpenAI integration, ensure the `NEXT_PUBLIC_OPENAI_API_KEY` environment variable is correctly set and the OpenAI library is properly configured.  Consider using a backend API route for production to handle sensitive API keys.
+
 
 ## FINAL DOs AND DON'Ts
 - **DO** use pnpm for package management.
@@ -63,8 +59,6 @@ The project follows a standard Next.js folder structure with additional folders 
 - **DO** understand that `pnpm run graphql:generate` runs the GraphQL Code Generator to generate TypeScript types and code from your GraphQL schema and operations, ensuring type safety and improved IDE support.  The generated files are stored in `/src/generated`.
 - **DO** handle potential hydration mismatches by ensuring consistent rendering between server and client, especially when dealing with session information.  Employ techniques like conditional rendering or loading states to mitigate this issue.  Consistent loading states are crucial for preventing hydration mismatches, especially when dealing with asynchronous data fetching and session information.  A loading state should be displayed during the initial render on both the server and client to ensure visual consistency and prevent errors.
 - **DO** secure your OpenAI API key by storing it as an environment variable and accessing it through a backend API route in production.
-- **DO**  install `openai` and `@apollo/client` packages using `pnpm add openai @apollo/client graphql`
-- **DO** utilize the `/api/graphql-finder` endpoint for secure and context-aware GraphQL query generation.
 
 
 ### pnpm Installation Instructions:

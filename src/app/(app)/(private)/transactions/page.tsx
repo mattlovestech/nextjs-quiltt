@@ -2,39 +2,63 @@
 
 import { gql, useQuery, useQuilttSession } from '@quiltt/react'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
-import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import type { Transaction } from '@/generated/graphql'
 
 const QUERY = gql`query Query {
-  transactions {
+  accounts {
     id
-    description
-    amount
-    date
-    account {
-      name
+    name
+    transactions {
+      edges {
+        node {
+          id
+          description
+          amount
+          date
+        }
+      }
     }
   }
 }`
 
 const Transactions = () => {
-  const { data, loading } = useQuery<{ transactions: Array<Partial<Transaction>> }>(QUERY)
+  const [mounted, setMounted] = useState(false)
+  const { data, loading, error } = useQuery<{ 
+    accounts: Array<{ 
+      id: string
+      name: string
+      transactions: { 
+        edges: Array<{ 
+          node: Partial<Transaction> 
+        }> 
+      } 
+    }> 
+  }>(QUERY)
   const { session } = useQuilttSession()
   const router = useRouter()
 
   useEffect(() => {
+    setMounted(true)
     if (!session) {
       router.push('/login')
     }
   }, [session, router])
 
-  if (!session) {
+  if (!session || !mounted) {
     return null
   }
 
-  const { transactions } = data || {}
+  const transactions = data?.accounts?.flatMap(account => 
+    account.transactions?.edges?.map(edge => ({
+      ...edge.node,
+      account: { name: account.name }
+    })) || []
+  ) || []
+
+  const hasAccounts = data?.accounts && data.accounts.length > 0
+  const hasTransactions = transactions.length > 0
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -48,6 +72,12 @@ const Transactions = () => {
           <div className="p-6">
             {loading ? (
               <div className="text-gray-500">Loading transactions...</div>
+            ) : error ? (
+              <div className="text-red-500">Error loading transactions: {error.message}</div>
+            ) : !hasAccounts ? (
+              <div className="text-gray-500">No accounts found. Please connect a bank account to view transactions.</div>
+            ) : !hasTransactions ? (
+              <div className="text-gray-500">No transactions found in your connected accounts.</div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
@@ -60,7 +90,7 @@ const Transactions = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {transactions?.map((transaction) => (
+                    {transactions.map((transaction) => (
                       <tr key={transaction.id}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {new Date(transaction.date).toLocaleDateString()}
